@@ -1,0 +1,10 @@
+/venv
+models--Systran--faster-whisper-large-v2/blobs/346bb8684801a61c15ce82bcb80c29a63c2d1f94
+models--Systran--faster-whisper-large-v2/blobs/7818adb6de9fa3064d3ff81226fdd675be1f6344
+models--Systran--faster-whisper-large-v2/blobs/bf2a9746382e1aa7ffff6b3a0d137ed9edbd9670c3b87e5d35f5e85e70d0333a
+models--Systran--faster-whisper-large-v2/blobs/c9074644d9d1205686f16d411564729461324b75
+models--Systran--faster-whisper-large-v2/refs/main
+models--Systran--faster-whisper-large-v2/snapshots/f0fe81560cb8b68660e564f55dd99207059c092e/config.json
+models--Systran--faster-whisper-large-v2/snapshots/f0fe81560cb8b68660e564f55dd99207059c092e/model.bin
+models--Systran--faster-whisper-large-v2/snapshots/f0fe81560cb8b68660e564f55dd99207059c092e/tokenizer.json
+models--Systran--faster-whisper-large-v2/snapshots/f0fe81560cb8b68660e564f55dd99207059c092e/vocabulary.txt
