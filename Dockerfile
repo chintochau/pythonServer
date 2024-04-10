@@ -33,3 +33,9 @@ COPY . .
 CMD ["python3", "whisper-server.py"]
 
 # run command: docker run --gpus all -it -p 5000:5000 flask-whisper
+# build command: docker build -t flask-whisper .
+# push command: docker tag flask-whisper:latest chintochau1/flask-whisper:latest
+# docker push chintochau1/flask-whisper:latest
+# docker pull chintochau1/flask-whisper:latest
+# docker run --gpus all -it -p 5000:5000 chintochau1/flask-whisper:latest
+# docker run --gpus all -it -p 5000:5000 flask-whisper
