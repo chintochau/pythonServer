@@ -8,3 +8,14 @@ models--Systran--faster-whisper-large-v2/snapshots/f0fe81560cb8b68660e564f55dd99
 models--Systran--faster-whisper-large-v2/snapshots/f0fe81560cb8b68660e564f55dd99207059c092e/model.bin
 models--Systran--faster-whisper-large-v2/snapshots/f0fe81560cb8b68660e564f55dd99207059c092e/tokenizer.json
 models--Systran--faster-whisper-large-v2/snapshots/f0fe81560cb8b68660e564f55dd99207059c092e/vocabulary.txt
+models--Systran--faster-whisper-large-v3/blobs/0adcd01e7c237205d593b707e66dd5d7bc785d2d
+models--Systran--faster-whisper-large-v3/blobs/3a5e2ba63acdcac9a19ba56cf9bd27f185bfff61
+models--Systran--faster-whisper-large-v3/blobs/69f74147e3334731bc3a76048724833325d2ec74642fb52620eda87352e3d4f1
+models--Systran--faster-whisper-large-v3/blobs/931c77a740890c46365c7ae0c9d350ba3cca908f
+models--Systran--faster-whisper-large-v3/blobs/75336feae814999bae6ccccdecf177639ffc6f9d
+models--Systran--faster-whisper-large-v3/refs/main
+models--Systran--faster-whisper-large-v3/snapshots/edaa852ec7e145841d8ffdb056a99866b5f0a478/config.json
+models--Systran--faster-whisper-large-v3/snapshots/edaa852ec7e145841d8ffdb056a99866b5f0a478/model.bin
+models--Systran--faster-whisper-large-v3/snapshots/edaa852ec7e145841d8ffdb056a99866b5f0a478/preprocessor_config.json
+models--Systran--faster-whisper-large-v3/snapshots/edaa852ec7e145841d8ffdb056a99866b5f0a478/tokenizer.json
+models--Systran--faster-whisper-large-v3/snapshots/edaa852ec7e145841d8ffdb056a99866b5f0a478/vocabulary.json

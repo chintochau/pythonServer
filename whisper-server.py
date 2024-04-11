@@ -8,7 +8,7 @@ from moviepy.editor import  AudioFileClip
 
 app = Flask(__name__)
 
-model_size = "large-v2"
+model_size = "large-v3"
 model = WhisperModel(model_size, device="cuda", compute_type="float16",download_root=".")
 
 def format_srt_time(start_time):
@@ -28,7 +28,7 @@ def transcribe():
     file_path = os.path.join("uploads/", unique_filename)
     file.save(file_path)
 
-    segments, info = model.transcribe(file_path, beam_size=5, chunk_length=30)
+    segments, info = model.transcribe(file_path, beam_size=5, chunk_length=30,vad_filter=True)
 
     clip = AudioFileClip(file_path)
     duration = clip.duration
