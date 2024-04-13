@@ -5,6 +5,12 @@ import os
 import uuid
 from progress.bar import Bar
 from moviepy.editor import  AudioFileClip
+from dotenv import load_dotenv
+load_dotenv()
+import cloudinary
+import json
+import cloudinary.uploader
+config = cloudinary.config(secure=True)
 
 app = Flask(__name__)
 
@@ -21,6 +27,12 @@ def format_srt_time(start_time):
     milliseconds = int((start_time - int(start_time)) * 1000)
     formatted_time = "%02d:%02d:%02d,%03d" % (hours, minutes, seconds, milliseconds)
     return formatted_time
+
+# delete file on cloudinary
+def delete_file_on_cloudinary(public_id, resource_type):
+    cloudinary.uploader.destroy(public_id, resource_type = resource_type)
+    pass
+
 
 @app.route('/transcribe', methods=['POST'])
 def transcribe():
@@ -55,6 +67,8 @@ def transcribe():
 @app.route('/transcribe_with_link', methods=['POST'])
 def transcribe_with_link():
     link = request.form['link']
+    public_id = request.form['publicId']
+    resource_type = request.form['resourceType']
     transcriptionId = request.form['transcriptionId']
     
     # Initialize progress
@@ -79,7 +93,8 @@ def transcribe_with_link():
     bar.goto(duration)
     transcription_progress[transcriptionId] = 100
     bar.finish()
-    
+    delete_file_on_cloudinary(public_id, resource_type)
+
     # delete the file on cloudinary after processing
     # to be implemented
 
