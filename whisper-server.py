@@ -11,6 +11,8 @@ app = Flask(__name__)
 model_size = "large-v3"
 model = WhisperModel(model_size, device="cuda", compute_type="float16",download_root=".")
 
+transcription_progress = {}
+
 def format_srt_time(start_time):
     seconds = int(start_time % 60)
     total_minutes = int(start_time // 60)
@@ -49,6 +51,47 @@ def transcribe():
     os.remove(file_path)
 
     return output
+
+@app.route('/transcribe_with_link', methods=['POST'])
+def transcribe_with_link():
+    link = request.form['link']
+    transcriptionId = request.form['transcriptionId']
+    
+    # Initialize progress
+    transcription_progress[transcriptionId] = 0
+
+    segments, info = model.transcribe(link, beam_size=5, chunk_length=30,vad_filter=True)
+
+    clip = AudioFileClip(link)
+    duration = clip.duration
+    clip.close()
+    bar = Bar('Processing', max=duration, suffix='%(percent)d%% %(elapsed)ds')
+
+    output = ""
+    for segment in segments:
+        output += "%s\n" % (segment.id)
+        output += "%s --> %s\n" % (format_srt_time(segment.start), format_srt_time(segment.end))
+        output += "%s\n\n" % (segment.text)
+
+        # Update progress
+        transcription_progress[transcriptionId] = segment.end / duration * 100
+        bar.goto(segment.end)
+    bar.goto(duration)
+    transcription_progress[transcriptionId] = 100
+    bar.finish()
+    
+    # delete the file on cloudinary after processing
+    # to be implemented
+
+    return output
+
+@app.route('/check_transcription_progress', methods=['GET'])
+def check_transcription_progress():
+    transcriptionId = request.args.get('transcriptionId')
+    # if not progress, return 0
+    progress = transcription_progress[transcriptionId] if transcriptionId in transcription_progress else 0
+    print("progress: ", progress)
+    return str(progress)
 
 
 @app.route('/', methods=['GET'])
